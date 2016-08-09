@@ -832,6 +832,8 @@ void Node::AddChild(Node* node, unsigned index)
     node->parent_ = this;
     node->MarkDirty();
     node->MarkNetworkUpdate();
+    for (unsigned i = 0; i < components_.Size(); ++i)
+        components_[i]->MarkNetworkUpdate();
 
     // Send change event
     if (scene_)
